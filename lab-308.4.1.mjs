@@ -11,24 +11,51 @@ let c =''; //empty string reader
 const csv = `ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26`;
 
 
-for (c of csv) { //for loop with string c of csv reading through the string csv.   
+//for (c of csv) { //for loop with string c of csv reading through the string csv.   
+//    placehold++;
+//    if (c === `,`) { //have the string c go through the csv string until it reaches a comma.
+//        row1.push(content);
+//        content = ``;
+//    } else if(c === `\n`){ //if c encounters \n 
+//        row1.push(content)
+//        console.log(row1); //print out what was recorded up to the point of \n or the end of the string.
+//        row1 =[] //empty the array
+//        content = ``;
+//    } else if (placehold === csv.length){ //now if the string has ended, placehold should be the length of the string. if the c is at the string's end, input all the text from that point into the array.
+//        content += c; //print the last character.
+//        row1.push(content); //count should still be at 3, but this line should also print out the last character in the string. 
+//        console.log(row1); //print out what was recorded up to the point of \n or the end of the string.
+//        row1 =[]
+//        content = ``;
+//    } else{ //if c doesn't encounter a comma, check to see if count equals one of the following:
+//        content += c;        
+//    }
+//    
+//} 
+
+//Part 2
+//create a loop that will run the string to create a 2D array. Each row is it's own array. 
+
+let bigArray = [];
+
+for (c of csv){
     placehold++;
-    if (c === `,`) { //have the string c go through the csv string until it reaches a comma.
+    if (c === ','){
         row1.push(content);
         content = ``;
-    } else if(c === `\n`){ //if c encounters \n 
-        row1.push(content)
-        console.log(row1); //print out what was recorded up to the point of \n or the end of the string.
-        row1 =[] //empty the array
+    } else if (c === `\n`){
+        row1.push(content);
+        bigArray.push(row1);
+        row1 =[];
         content = ``;
-    } else if (placehold === csv.length){ //now if the string has ended, placehold should be the length of the string. if the c is at the string's end, input all the text from that point into the array.
+    } else if (placehold === csv.length){
         content += c;
-        row1.push(content); //count shoud still be at 3, but this line should also print out the last character in the string. 
-        console.log(row1); //print out what was recorded up to the point of \n or the end of the string.
-        row1 =[]
+        row1.push(content);
+        bigArray.push(row1);
+        row1 =[];
         content = ``;
-    } else{ //if c doesn't encounter a comma, check to see if count equals one of the following:
-        content += c;        
     }
-    
-} 
+    else{
+        content += c;
+    }
+} console.log(bigArray)
