@@ -59,7 +59,7 @@ for (c of csv){
     else{
         content += c;
     }
-} console.log(bigArray)
+} //console.log(bigArray)
 
 //Part 3
 //convert the bigArray so that each row becomes an object. Each object has a key name of each column in the array. And gather all objects into a new array.
@@ -67,7 +67,7 @@ for (c of csv){
 //this algorithim should have the same concept as the previous exercises. 
 
 
-let keys = bigArray[0].map(v => v.toLowerCase()); //set up an array that is a copy of the first row of the bigArray
+let keys = bigArray[0].map(v => v.toLowerCase()); //set up an array that is a copy of the first row of the bigArray but written in lowercase.
 let objects = []; //set up empty array to store the objects in it when created. 
 
 //create a for loop that goes through the big array starting at the second row (i = 1). Using a normal for loop as I want to just copy the indexes into the object.  
@@ -80,7 +80,22 @@ for (let i = 1; i < bigArray.length; i++) { //as long as i is less than the bigA
     objects.push(obj);//push the created object on to the array. 
 }
 
-console.log(objects)
+//console.log(objects)
+
+//Part 4
+
+let obj2 ={ id: "48", name: "Barry", occupation: "Runner", age: "25" };
+let obj3 ={ id: "7", name: "Bilbo", occupation: "None", age: "111" };
+let sum = 0;
+objects.splice(3, 1, obj3)
+objects.splice(1, 1, obj2)
 
 
+//go through the objects array and pick out the ages from each class by using a variable to go through each index. 
 
+for(let i = 0; i < objects.length; i++){
+    sum += Number(objects[i].age)
+    console.log(sum)
+}
+
+console.log(objects, `Average age of all employees is: ${sum / objects.length}` )
