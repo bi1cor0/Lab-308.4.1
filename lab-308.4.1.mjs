@@ -9,8 +9,8 @@ let content = ``;
 let placehold = 0; //create a placeholder var that counts the length of the string csv
 let c =''; //empty string reader
 const csv = `ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26`;
-
-
+//
+// commenting this out so that part 2 can go off without any other hitch. 
 //for (c of csv) { //for loop with string c of csv reading through the string csv.   
 //    placehold++;
 //    if (c === `,`) { //have the string c go through the csv string until it reaches a comma.
@@ -36,6 +36,7 @@ const csv = `ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,
 //Part 2
 //create a loop that will run the string to create a 2D array. Each row is it's own array. 
 
+placehold = 0;
 let bigArray = [];
 
 for (c of csv){
@@ -59,3 +60,27 @@ for (c of csv){
         content += c;
     }
 } console.log(bigArray)
+
+//Part 3
+//convert the bigArray so that each row becomes an object. Each object has a key name of each column in the array. And gather all objects into a new array.
+//Ex.: {id: 42, name: Bruce, occupation: Knight, age: 41}
+//this algorithim should have the same concept as the previous exercises. 
+
+
+let keys = bigArray[0].map(v => v.toLowerCase()); //set up an array that is a copy of the first row of the bigArray
+let objects = []; //set up empty array to store the objects in it when created. 
+
+//create a for loop that goes through the big array starting at the second row (i = 1). Using a normal for loop as I want to just copy the indexes into the object.  
+for (let i = 1; i < bigArray.length; i++) { //as long as i is less than the bigArray's length, keep the loop going. 
+    let obj = {}; //create empty object
+    for (let j = 0; j < keys.length; j++) { //nested for loop that deals with the columns of the bigArray. var keys will keep track of the columns, but will also give the object its keys.
+        obj[keys[j]] = bigArray[i][j]; //j will reference the position of keys, which in turn will hold the name of the key that has yet to be written onto the obj. j will uptick during the loop.
+        //vars i and j will reference the columns and indexes respectively on the bigArray and will assign the index over to the object key.
+    }
+    objects.push(obj);//push the created object on to the array. 
+}
+
+console.log(objects)
+
+
+
